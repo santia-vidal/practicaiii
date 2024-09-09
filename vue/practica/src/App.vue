@@ -10,6 +10,7 @@
         <router-link class="nav-link" to="/">Catalogo de Productos</router-link> 
         <router-link class="nav-link" to="/about">About</router-link> 
         <router-link class="nav-link" to="/pitagoras">Pitágoras</router-link>
+        <router-link class="nav-link" to="/cotizaciones">Cotizaciones</router-link>
       </div>
     </div>
   </div>

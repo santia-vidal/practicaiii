@@ -3,7 +3,6 @@
       <div class="row">
         <div class="col-4" v-for="(productos,index) of lista_productos.products" v-bind:key="index">
           <div class="card mb-4">
-            
               <img :src="productos.thumbnail" class="card-img-top" :alt="productos.title">
               <div class="card-body">
                 <h5 class="card-title">{{ productos.title }}</h5>
