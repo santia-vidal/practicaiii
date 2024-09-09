@@ -1,6 +1,5 @@
 <template>
-    <div>
-      <h1>Pitágoras</h1>
+    <div class="container">
       <PitagorasForm />
     </div>
   </template>
@@ -18,6 +17,6 @@
   </script>
   
   <style scoped>
-  /* Aquí puedes agregar estilos personalizados */
+
   </style>
   

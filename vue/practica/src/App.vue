@@ -9,7 +9,7 @@
       <div class="navbar-nav">
         <router-link class="nav-link" to="/">Catalogo de Productos</router-link> 
         <router-link class="nav-link" to="/about">About</router-link> 
-        <router-link class="nav-link" to="/pitagoras">Pitagoras</router-link>
+        <router-link class="nav-link" to="/pitagoras">Pitágoras</router-link>
       </div>
     </div>
   </div>
