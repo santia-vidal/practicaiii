@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
+const router = require('./routes/cliente.route')
 
 
 //ejecutamos express para acceder a sus funcionalidades
@@ -13,6 +14,9 @@ server.use(express.json())
 server.use(cors())
 //esta dependencia hace posible monitorear las solicitudes http
 server.use(morgan('dev'))
+
+//pongo en funcionamiento las rutas existentes en cliente.router
+server.use(require('./routes/cliente.route'))
 
 //seteamos puerto necesario para correr el server
 server.set('port', process.env.PORT || 3002)
