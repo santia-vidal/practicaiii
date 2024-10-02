@@ -20,5 +20,38 @@ router.post('/cliente', async(req,res) => {
         res.json('El cliente se insertó correctamentre')
 })
 
+router.put('/cliente/:idcliente', async(req,res) => {
+    const db = await conexion.obtener_conexion()
+
+    const unCliente = req.body
+    const id = req.params.idcliente
+
+    await db.query(`update cliente
+        set nombre = '${unCliente.nombre}', apellido = '${unCliente.apellido}', dni = ${unCliente.dni}
+        where id_cliente = ${id}`)
+
+        res.json('Actualización exitosa!')
+        
+})
+
+router.delete('/cliente/:idcliente', async(req,res) => {
+    const db = await conexion.obtener_conexion()
+
+    const id = req.params.idcliente
+
+    await db.query(`delete from cliente where id_cliente = ${id}`)
+
+    res.json('Eliminación exitosa!')
+})
+
+router.get('/cliente/:idcliente', async(req,res) => {
+    const db = await conexion.obtener_conexion()
+
+    const id = req.params.idcliente
+
+    const row = await db.query(`select * from cliente where id_cliente=${id}`)
+
+    res.json(row)
+})
 
 module.exports = router
