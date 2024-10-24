@@ -14,7 +14,9 @@
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
     "vue-axios": "^3.5.2",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

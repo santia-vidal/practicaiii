@@ -12,6 +12,7 @@
         <router-link class="nav-link" to="/pitagoras">Pitágoras</router-link>
         <router-link class="nav-link" to="/cotizaciones">Cotizaciones</router-link>
         <router-link class="nav-link" to="/cliente">Cliente</router-link>
+        <router-link class="nav-link" to="/socket">Socket</router-link>
       </div>
     </div>
   </div>
