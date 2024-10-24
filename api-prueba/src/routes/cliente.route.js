@@ -4,7 +4,7 @@ const router = express.Router()
 
 const conexion = require('../database')
 
-router.get('/clientes', async(req,res) => {
+router.get('/cliente', async(req,res) => {
     const db = await conexion.obtener_conexion()
     const rows = await db.query('select * from cliente')
     res.json(rows)
@@ -14,8 +14,8 @@ router.post('/cliente', async(req,res) => {
     const unCliente = req.body
     const db = await conexion.obtener_conexion()
 
-    await db.query(`insert into cliente (nombre, apellido, dni)
-        values('${unCliente.nombre}','${unCliente.apellido}',${unCliente.dni})`)
+    await db.query(`insert into cliente (razon_social, telefono, direccion_ip, descripcion_equipo, sistema_operativo)
+        values('${unCliente.razon_social}',${unCliente.telefono}, ${unCliente.direccion_ip}',${unCliente.descripcion_equipo}','${unCliente.sistema_operativo}')`)
 
         res.json('El cliente se insertó correctamentre')
 })
@@ -27,7 +27,7 @@ router.put('/cliente/:idcliente', async(req,res) => {
     const id = req.params.idcliente
 
     await db.query(`update cliente
-        set nombre = '${unCliente.nombre}', apellido = '${unCliente.apellido}', dni = ${unCliente.dni}
+        set razon_social = '${unCliente.razon_social}', telefono = ${unCliente.telefono}, direccion_ip = ${unCliente.direccion_ip}, descripcion_equipo = '${unCliente.descripcion_equipo}', sistema_oprativo = '${sistema_operativo}'
         where id_cliente = ${id}`)
 
         res.json('Actualización exitosa!')
