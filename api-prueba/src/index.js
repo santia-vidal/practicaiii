@@ -2,6 +2,10 @@ const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
 const router = require('./routes/cliente.route')
+const os = require('node-os-utils')
+
+//acceder a los recuros
+const cpu = os.cpu
 
 const socketio = require('socket.io')
 const osu = require('node-os-utils')
