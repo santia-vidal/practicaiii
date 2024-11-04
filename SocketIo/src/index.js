@@ -34,7 +34,6 @@ console.log('Servidor corriendo en el puerto: '+server.get('port'))
 
 //le pasamos el servidor a socketio, para habilitar el canal websocket
 const io = socketio(servidor)
-const cpu = osu.cpu
 
 io.on('connection', () => {
 

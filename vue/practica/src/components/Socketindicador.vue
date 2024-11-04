@@ -4,8 +4,9 @@
         <div class="row">
             <div class="col-3">
                 <div class="mb-3">
-                    <select v-model="equipo" class="form-select">
+                    <select @equipo="capturar_random()" v-model="equipo" class="form-select">
                         <option value="-1" selected disabled>Seleccione equipo...</option>
+                        <option value="http://localhost:3002"> Mi equipo</option>
                     </select>
                 </div>
             </div>
@@ -14,9 +15,9 @@
             <div class="col-4">
                 <div class="mb-3">
                     <div class="card">
-                        <div class="card-reader text-center"><b>Cpu</b></div>
+                        <div class="card-reader text-center"><b>{{equipo}}</b></div>
                         <div class="card-body text-center">
-                            <h1>{{ valor }}</h1>
+                            <h1>{{valor}}</h1>
                         </div>
                         <div class="card-footer">
                             <h4></h4>
@@ -35,13 +36,15 @@ export default{
     name:'Socketindicador',
     data() {
         return{
-            valor : null
+            valor : null,
+            equipo: ''
+
         }
     },
     methods: {
         capturar_random()
         {
-            const socket = io("http://localhost:3002")
+            const socket = io(this.equipo)
 
             socket.on('cpuPorcentual', (valor) => {
                 this.valor = valor
