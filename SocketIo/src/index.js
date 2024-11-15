@@ -2,6 +2,10 @@
 const express = require('express')
 const cors = require('cors')
 const socketio = require('socket.io')
+const osu = require('node-os-utils')
+
+//acceder a los recursos, node-os-utils
+var cpu = osu.cpu
 
 //declaro constante
 const server = express()
@@ -18,9 +22,6 @@ const servidor = server.listen( server.get('port'), () => {
 //le pasamos el servidor a socketio, para habilitar el canal websocket
 const io = socketio(servidor)
 
-//declaro variable
-var cpu = osu.cpu
-
 //establecemos la apertura del canal, par emitir posteriormente los datos
 io.on('connection', (socket) => {
 
@@ -31,6 +32,18 @@ io.on('connection', (socket) => {
                 nombre:'Santi'
             }
         )
+    }, 1000)
+
+    setInterval(() => {
+        cpu.free()
+        .then(info => {
+            socket.emit('datos-cpu',
+                {
+                    descripcion:'CPU FREE',
+                    data: info
+                }
+            )
+        });
     }, 1000)
 
     socket.on('respuesta', (valor) => {

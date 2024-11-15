@@ -18,7 +18,7 @@
             <div class="col-4">
                 <div class="mb-3">
                     <div class="card">
-                        <div class="card-reader text-center"><b>{{nombre}}</b></div>
+                        <div class="card-reader text-center"><b> {{nombre}}</b></div>
                         <div class="card-body text-center">
                             <h1>{{valor_recibido}}</h1>
                         </div>
@@ -26,6 +26,18 @@
                             <h4>{{estado}}</h4>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        {{ descripcion_cpu_free }}
+                    </div>
+                    <div class="card-body">
+                        <h1>{{ valor_cpu_free }}</h1>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -42,7 +54,10 @@ export default{
             valor_recibido:null,
             estado:'',
             equipo:'',
-            nombre:''
+            nombre:'',
+            valor_cpu_free:null,
+            descripcion_cpu_free:''
+
 
         }
     },
@@ -61,6 +76,11 @@ export default{
                 }else{
                     this.estado = 'Normal' 
                 }
+            });
+
+            socket.on('datos-cpu', (objeto) => {
+                this.valor_cpu_free = objeto.data;
+                this.descripcion_cpu_free = objeto.descripcion;
             })
         }
     }
